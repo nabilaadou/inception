@@ -1,7 +1,8 @@
 FROM debian:latest
 
 # Install required packages
-RUN apt-get update -y && apt-get install php-fpm php-mysql php-cli php-curl php-gd php-mbstring php-xml php-zip wget unzip curl -y
+RUN apt-get update -y && apt-get install php8.2-fpm php8.2-mysql php8.2-cli php8.2-curl \
+    php8.2-gd php8.2-mbstring php8.2-xml php8.2-zip wget unzip curl -y
 
 RUN mkdir -p /var/www/html
 
@@ -20,7 +21,7 @@ RUN wp config set DB_NAME "name" --allow-root --path=/var/www/html \
     && wp config set DB_PASSWORD "123" --allow-root --path=/var/www/html \
     && wp config set DB_HOST 'mariadb:3306' --allow-root --path=/var/www/html
 
-RUN sed -i 's#listen = /run/php/php7.4-fpm.sock#listen = 0.0.0.0:9000#' /etc/php/7.4/fpm/pool.d/www.conf
+RUN sed -i 's#listen = /run/php/php8.2-fpm.sock#listen = 0.0.0.0:9000#' /etc/php/7.4/fpm/pool.d/www.conf
 
 # # Expose PHP-FPM port (to communicate with Nginx)
 EXPOSE 9000
