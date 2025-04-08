@@ -1,0 +1,24 @@
+version '3.8'
+
+services:
+  nginx:
+    image: nginx
+    build: ./requirements/nginx
+    container_name: nginx
+    restart: always
+    networks:
+      - wordpress_net
+    env_file:
+      - ./.env
+  wordpress:
+  mariadb:
+
+network:
+  webserv_net:
+  database_net:
+  wordpress_net
+  
+
+volumes:
+  ws:
+  db:
