@@ -2,21 +2,23 @@
 
 # Start MariaDB in the background and wait for it to be ready
 mysqld_safe &
-until mysqladmin ping --silent; do sleep 1; done
+sleep 3
 
 # Create the database and user
 mariadb -u root <<EOF
-CREATE DATABASE IF NOT EXISTS name;
-CREATE USER IF NOT EXISTS user@'%' IDENTIFIED BY '123';
-GRANT ALL PRIVILEGES ON name.* TO user@'%';
+CREATE DATABASE IF NOT EXISTS $DB_NAME;
+CREATE USER IF NOT EXISTS $DB_USER@'%' IDENTIFIED BY "$DB_PASSWORD";
+GRANT ALL PRIVILEGES ON ${DB_NAME}.* TO $DB_USER@'%';
 FLUSH PRIVILEGES;
 EOF
 
 # Set the root password safely
-mysql -u root -e "SET PASSWORD FOR 'root'@'localhost' = PASSWORD('123');"
+mariadb -u root <<EOF
+ALTER USER 'root'@'localhost' IDENTIFIED BY "$DB_ROOT_PASSWORD";
+EOF
 
 # Shutdown MariaDB to apply changes
-mysqladmin -uroot -p123 shutdown
+mysqladmin -uroot -p$DB_ROOT_PASSWORD Shutdown
 
 # Restart MariaDB in the foreground
 exec mysqld_safe
