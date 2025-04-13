@@ -1,4 +1,4 @@
-FROM debian:latest
+FROM debian:stable
 
 # Install required packages
 RUN apt-get update -y \

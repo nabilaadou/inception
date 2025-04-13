@@ -31,4 +31,4 @@ wp core install --url=naadou.42.fr --title="LAUNDRY DAY" --admin_user="$WP_ADMIN
 wp user create $.en $WP_USER_EMAIL --role=author --user_pass=$WP_USER_PASSWORD --allow-root --path=/var/www/html \
 	--allow-root --path=/var/www/html
 
-/usr/sbin/php-fpm8.2 -F
+exec /usr/sbin/php-fpm8.2 -F
