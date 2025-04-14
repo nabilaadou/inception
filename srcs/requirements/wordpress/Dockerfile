@@ -1,6 +1,5 @@
 FROM debian:stable
 
-# Install required packages
 RUN apt-get update -y \
     && apt-get install \
     php8.2-fpm \
@@ -11,12 +10,16 @@ RUN apt-get update -y \
     php8.2-mbstring \
     php8.2-xml \
     php8.2-zip \
-    curl -y
+    php-redis \
+    curl \
+    tini -y
 
 COPY tools/ws.sh /root/script/ws.sh
 
 RUN chmod +x /root/script/ws.sh
 
 EXPOSE 9000
+
+ENTRYPOINT ["/usr/bin/tini", "--"]
 
 CMD ["sh", "/root/script/ws.sh"]

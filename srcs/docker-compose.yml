@@ -25,6 +25,7 @@ services:
       - inception
     depends_on:
       - mariadb
+      - redis
     volumes:
       - ws:/var/www/html
     env_file:
@@ -42,10 +43,31 @@ services:
       - db:/var/lib/mysql
     env_file:
       - ./.env
+  redis:
+    image: redis
+    build: ./requirements/redis
+    container_name: redis
+    restart: always
+    ports:
+      - 6378:6379
+    networks:
+      - inception
+    env_file:
+      - ./.env
 
 networks:
   inception:
 
 volumes:
   ws:
+    driver: local
+    driver_opts:
+       o: bind
+       type: none
+       device: /home/laundryday/data/ws
   db:
+    driver: local
+    driver_opts:
+       o: bind
+       type: none
+       device: /home/laundryday/data/db

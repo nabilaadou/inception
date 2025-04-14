@@ -1,7 +1,6 @@
 FROM debian:stable
 
-RUN apt-get update -y && apt-get install nginx openssl -y \
-	&& apt-get install tini -y
+RUN apt-get update -y && apt-get install nginx openssl tini -y
 
 COPY conf/nginx.conf /etc/nginx/conf.d/
 

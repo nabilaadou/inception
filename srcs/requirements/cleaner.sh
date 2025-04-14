@@ -8,4 +8,5 @@ sudo docker rmi -f $(sudo docker images -q)
 
 sudo docker volume prune -f
 
-sudo rm -rf data
+sudo rm -rf $HOME/data/ws/*
+sudo rm -rf $HOME/data/db/*

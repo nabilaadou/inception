@@ -1,15 +1,15 @@
-FROM debian:latest
+FROM debian:stable
 
-RUN apt-get update && apt-get install -y mariadb-server
+RUN apt-get update && apt-get install mariadb-server tini -y
 
 COPY  conf/50-server.cnf /etc/mysql/mariadb.conf.d/
-
-COPY tools/init.sql /etc/mysql/init.sql
 
 COPY tools/database.sh /root/script/
 
 RUN chmod +x /root/script/database.sh
 
 EXPOSE 3306
+
+ENTRYPOINT ["/usr/bin/tini", "--"]
 
 CMD ["sh", "/root/script/database.sh"]

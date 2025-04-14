@@ -4,23 +4,18 @@ mkdir -p /run/mysqld
 chown -R mysql:mysql /run/mysqld
 
 # # Start MariaDB in the background and wait for it to be ready
-# mysqld_safe &
+mysqld_safe &
 
 # # Wait until MariaDB is ready
-# until mariadb -u root -e "SELECT 1" > /dev/null 2>&1; do
-#   echo "⏳ Waiting for MariaDB to be ready..."
-#   sleep 2
-# done
-
-# echo "✅ MariaDB is ready!"
+sleep 3
 
 # # Create the database and user
-# mariadb -u root <<EOF
-# CREATE DATABASE IF NOT EXISTS $DB_NAME;
-# CREATE USER IF NOT EXISTS $DB_USER@'%' IDENTIFIED BY "$DB_PASSWORD";
-# GRANT ALL PRIVILEGES ON ${DB_NAME}.* TO $DB_USER@'%';
-# FLUSH PRIVILEGES;
-# EOF
+mariadb -u root <<EOF
+CREATE DATABASE IF NOT EXISTS $DB_NAME;
+CREATE USER IF NOT EXISTS $DB_USER@'%' IDENTIFIED BY "$DB_PASSWORD";
+GRANT ALL PRIVILEGES ON *.* TO $DB_USER@'%' WITH GRANT OPTION;;
+FLUSH PRIVILEGES;
+EOF
 
 # # Set the root password safely
 # mariadb -u root <<EOF
@@ -28,10 +23,7 @@ chown -R mysql:mysql /run/mysqld
 # EOF
 
 # # Shutdown MariaDB to apply changes
-# mysqladmin -uroot -p$DB_ROOT_PASSWORD Shutdown
+mysqladmin -u root Shutdown
 
 # # Restart MariaDB in the foreground
-# exec mysqld_safe
-
-mysql_install_db
-mysqld
+mysqld_safe
