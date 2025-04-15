@@ -65,6 +65,18 @@ services:
       - inception
     depends_on:
       - mariadb
+  ftp:
+    image: ftp
+    build: ./requirements/ftp
+    container_name: ftp
+    restart: always
+    networks:
+      - inception
+    ports:
+      - 21:21
+      - 40000-40100:40000-40100
+    volumes:
+      - ws:/var/www/html
 
 networks:
   inception:
