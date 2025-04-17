@@ -80,6 +80,7 @@ services:
 
 networks:
   inception:
+  #bridge type is the default
 
 volumes:
   ws:

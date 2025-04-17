@@ -18,4 +18,4 @@ EXPOSE 8080
 
 ENTRYPOINT ["/usr/bin/tini", "--"]
 
-CMD ["php", "-S", "0.0.0.0:8080"]
+CMD ["php", "-S", "127.0.0.1:8080"]

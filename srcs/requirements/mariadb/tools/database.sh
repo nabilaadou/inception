@@ -17,11 +17,6 @@ GRANT ALL PRIVILEGES ON *.* TO $DB_USER@'%' WITH GRANT OPTION;;
 FLUSH PRIVILEGES;
 EOF
 
-# # Set the root password safely
-# mariadb -u root <<EOF
-# ALTER USER 'root'@'localhost' IDENTIFIED BY "$DB_ROOT_PASSWORD";
-# EOF
-
 # # Shutdown MariaDB to apply changes
 mysqladmin -u root Shutdown
 
