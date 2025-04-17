@@ -1,100 +1,124 @@
-🐳 Docker Basics
-This document provides a concise yet informative overview of Docker, Docker Compose, container lifecycle essentials, and networking. Whether you're just starting out or need a quick refresher, this guide will help clarify key Docker concepts.
+# Docker Inception 🐳
 
-📦 What is Docker?
-Docker is a containerization platform that allows you to run applications in isolated environments called containers.
-Each container is a lightweight, standalone, and executable package that includes everything needed to run the application, such as:
+A beginner-friendly overview of Docker, Docker Compose, containers, volumes, networking, and more.
 
-Code
+---
 
-Runtime
+## **What is Docker?**
 
-System tools
+Docker is a **containerization platform** that runs applications in isolated environments called **containers**.
 
-Libraries
+Containers are:
+- Lightweight
+- Fast
+- Portable
 
-Dependencies
+Each container contains everything needed to run your application (code, libraries, dependencies, etc.) and does **not** rely on any pre-installed services from the host machine.
 
-Unlike virtual machines, containers share the host system's kernel, making them efficient and fast. They do not rely on pre-installed services from the host.
+---
 
-🧩 What is Docker Compose?
-Docker Compose is a tool used to manage multi-container Docker applications.
-With Compose, you can:
+## **What is Docker Compose?**
 
-Define services, volumes, and networks in a single docker-compose.yml file
+Docker Compose is a tool for defining and managing **multi-container Docker applications** using a YAML file.
 
-Use simple commands like docker-compose up and docker-compose down to manage the whole stack
+With a `docker-compose.yml` file, you can:
+- Configure services, volumes, networks, etc.
+- Spin up the entire stack using one command:
+  
+  ```bash
+  docker-compose up
+  ```
 
-Great for managing environments like:
+---
 
-Web + database + cache servers
+## **Docker Architecture**
 
-Microservice-based systems
+Docker uses a **client-server architecture**:
 
-⚙️ Docker Architecture
-Docker uses a client-server architecture:
+- **Docker Client**: Sends commands (like `docker run`, `docker build`) to the daemon.
+- **Docker Daemon (`dockerd`)**: Performs requested tasks such as building images or running containers.
 
-Docker Client:
-The interface through which users interact with Docker (e.g., via CLI commands like docker build, docker run, etc.).
+**Example Flow**:
+```bash
+docker run hello-world
+# --> client sends request to daemon
+# --> daemon pulls image and runs container
+```
 
-Docker Daemon (dockerd):
-The background service that listens for Docker API requests and manages Docker objects like images, containers, networks, and volumes.
+---
 
-Flow example:
+## **PID 1 — The Init Process**
 
-arduino
-Copy
-Edit
-You run `docker run` --> Docker Client sends API request --> Docker Daemon processes it and spins up a container
-🧠 PID 1 — The Init Process in Containers
-Every Docker container has a PID 1 process — the first process started inside the container. It acts as the init process and is the ancestor of all other processes within the container.
+In Docker containers, the **first process** that runs is called **PID 1** (or init process). It becomes the parent of all other processes in the container.
 
-Why PID 1 matters:
+### Why it's important:
+- PID 1 is responsible for **handling and forwarding OS signals** (like `SIGTERM`, `SIGINT`).
+- If not handled properly, signals might be ignored, and child processes could remain running or exit improperly.
 
-It is responsible for forwarding OS signals (e.g., SIGTERM, SIGINT) to its child processes.
+🛠 **Best Practice**:
+Use proper init systems (e.g., [`tini`](https://github.com/krallin/tini)) or ensure your entrypoint handles signals.
 
-If PID 1 doesn’t handle these signals correctly, child processes might not shut down cleanly, causing unexpected behavior.
+---
 
-💡 Best practice: Use tools like tini or write proper signal handling logic in your container's entrypoint script.
+## **Volumes — Persistent Storage**
 
-💾 Volumes — Persisting Data
-By default, data written inside a container is ephemeral—it disappears once the container stops or is removed.
+By default, data inside a container is **lost** when the container stops or is removed.
 
-To persist data, Docker offers two main storage mechanisms:
+Docker provides two main ways to **persist data**:
 
-1. Volumes
-Managed by Docker itself
+### 🔸 Volumes
+- Managed entirely by Docker
+- Stored in `/var/lib/docker/volumes/`
+- Accessible only by Docker
+- **Recommended** for most use cases due to better performance and ease of management
 
-Data is stored in a part of the host filesystem managed by Docker (/var/lib/docker/volumes/...)
+### 🔸 Bind Mounts
+- Mount specific files/directories from the host into the container
+- Changes are **reflected both ways** (host <--> container)
+- Useful for development, real-time file sync
 
-Only accessible by Docker
+---
 
-Recommended approach due to performance and portability
+## **Networks — Container Communication**
 
-2. Bind Mounts
-Link a specific file or directory from the host into the container
+Docker allows containers to communicate with each other and the outside world using **network drivers**.
 
-Changes in the container reflect on the host and vice versa
+### 🔹 Bridge Network (Default)
+- Most common driver
+- Created automatically (`bridge`)
+- Containers on the same bridge network can talk to each other
+- Each container has its own **internal IP**
+- Provides **isolation** from containers not on the same network
+- Enables **internet access** via **NAT (Network Address Translation)**
 
-Useful for development scenarios or sharing data between host and container
+🧠 You can create **custom bridge networks** to better control container communication and use container names as DNS hostnames.
 
-🌐 Docker Networks
-Docker networking allows containers to communicate with each other and with the outside world. Docker provides several network drivers, but the most commonly used one is:
+---
 
-🔗 Bridge Network
-Default network driver used by Docker
+## **Summary Table**
 
-Created automatically when Docker is installed (bridge)
+| Concept        | Description |
+|----------------|-------------|
+| **Docker**     | Container platform to run isolated apps |
+| **Compose**    | Tool for defining and managing multi-container apps |
+| **PID 1**      | First process in a container; handles signals |
+| **Volumes**    | Persistent data storage for containers |
+| **Networking** | Allows communication between containers and external systems |
 
-Containers on the same bridge network can communicate with each other
+---
 
-Each container gets its own IP address
+## **Resources**
 
-Supports NAT (Network Address Translation) for internet access
+- 📘 [Docker Official Documentation](https://docs.docker.com/)
+- 🧩 [Docker Compose Docs](https://docs.docker.com/compose/)
+- 🌐 [Bridge Network Driver](https://docs.docker.com/network/drivers/bridge/)
 
-Provides isolation between containers on different networks
 
-📝 You can create custom bridge networks to control communication more precisely and use container names as DNS hostnames.
+
+
+
+
+
 ressources
 docker basics:
   https://docs.docker.com/get-started/docker-overview/
