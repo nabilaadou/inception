@@ -109,20 +109,6 @@ Docker allows containers to communicate with each other and the outside world us
 
 ## **Resources**
 
-- 📘 [Docker Official Documentation](https://docs.docker.com/)
-- 🧩 [Docker Compose Docs](https://docs.docker.com/compose/)
-- 🌐 [Bridge Network Driver](https://docs.docker.com/network/drivers/bridge/)
-
-
-
-
-
-
-
-ressources
-docker basics:
-  https://docs.docker.com/get-started/docker-overview/
-pid1:
-  https://cloud.theodo.com/en/blog/docker-processes-container
-volumes && networks
-  https://pagertree.com/learn/docker/storage
+- 📘 [docker basics](https://docs.docker.com/get-started/docker-overview/)
+- 🧩 [pid1](https://cloud.theodo.com/en/blog/docker-processes-container)
+- 🌐 [volumes && networks](https://pagertree.com/learn/docker/storage)
