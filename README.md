@@ -129,5 +129,6 @@ Docker allows containers to communicate with each other and the outside world us
 ## **Resources**
 
 - 📘 [docker basics](https://docs.docker.com/get-started/docker-overview/)
+- ☰ [docker layers](https://docs.docker.com/get-started/docker-concepts/building-images/understanding-image-layers/)
 - 🧩 [pid1](https://cloud.theodo.com/en/blog/docker-processes-container)
 - 🌐 [volumes && networks](https://pagertree.com/learn/docker/storage)
