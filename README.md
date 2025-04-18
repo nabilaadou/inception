@@ -47,6 +47,25 @@ docker run hello-world
 
 ---
 
+## **Docker Layers**
+
+Docker images are built in **layers**, where each layer represents a set of **filesystem (FS) changes**. These changes could include actions like installing a package, modifying a file, or deleting content.
+
+Each instruction in a Dockerfile (like `RUN`, `COPY`, etc.) creates a new layer.
+
+When you build an image:
+- Docker stacks these layers on top of each other.
+- If you rebuild the image and only the top layer changes, Docker can **reuse cached layers** below to speed up the build.
+
+When you **run a container** from an image:
+- Docker uses a **union filesystem** to combine all the image layers into a single, unified view.
+- Additionally, a **writable layer** is created on top. This layer captures any changes made by the running container (e.g., logs, temporary files).
+- The original image layers remain **unchanged**, so multiple containers can share the same image without affecting each other.
+
+This layered architecture makes Docker **efficient**, **modular**, and **fast** for development and deployment.
+
+---
+
 ## **PID 1 — The Init Process**
 
 In Docker containers, the **first process** that runs is called **PID 1** (or init process). It becomes the parent of all other processes in the container.
@@ -110,5 +129,6 @@ Docker allows containers to communicate with each other and the outside world us
 ## **Resources**
 
 - 📘 [docker basics](https://docs.docker.com/get-started/docker-overview/)
+- ☰ [docker layers](https://docs.docker.com/get-started/docker-concepts/building-images/understanding-image-layers/)
 - 🧩 [pid1](https://cloud.theodo.com/en/blog/docker-processes-container)
 - 🌐 [volumes && networks](https://pagertree.com/learn/docker/storage)
