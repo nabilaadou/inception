@@ -3,7 +3,7 @@ FROM debian:stable
 RUN apt-get update -y && apt-get install -y \
     wget \
     php \
-	php-mysqli \
+    php-mysqli \
     tini
 
 RUN mkdir -p /var/www/html
@@ -18,4 +18,4 @@ EXPOSE 8080
 
 ENTRYPOINT ["/usr/bin/tini", "--"]
 
-CMD ["php", "-S", "0.0.0.0:8000"]
+CMD ["php", "-S", "0.0.0.0:8080"]
