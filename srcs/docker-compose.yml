@@ -45,7 +45,7 @@ services:
       - ./.env
   redis:
     image: redis
-    build: ./requirements/redis
+    build: ./requirements/bonus/redis
     container_name: redis
     restart: always
     ports:
@@ -56,7 +56,7 @@ services:
       - ./.env
   adminer:
     image: adminer
-    build: ./requirements/adminer
+    build: ./requirements/bonus/adminer
     container_name: adminer
     restart: always
     ports:
@@ -67,7 +67,7 @@ services:
       - mariadb
   ftp:
     image: ftp
-    build: ./requirements/ftp
+    build: ./requirements/bonus/ftp
     container_name: ftp
     restart: always
     networks:
@@ -79,7 +79,7 @@ services:
       - ws:/var/www/html
   portfolio:
     image: portfolio
-    build: ./requirements/portfolio
+    build: ./requirements/bonus/portfolio
     container_name: portfolio
     restart: always
     ports:
@@ -91,13 +91,11 @@ networks:
 
 volumes:
   ws:
-    driver: local
     driver_opts:
        o: bind
        type: none
        device: /home/laundryday/data/ws
   db:
-    driver: local
     driver_opts:
        o: bind
        type: none
