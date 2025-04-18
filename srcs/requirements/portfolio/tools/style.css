@@ -1,0 +1,370 @@
+* {
+    margin: 0;
+}
+
+/* about me section */
+.introduction {
+	background: linear-gradient(
+		to left,
+		rgb(20, 22, 77, 100%) 0%,
+		rgb(20, 22, 77, 100%) 75%,
+		rgb(211, 241, 143) 75%,
+		rgb(211, 241, 143) 100%,
+		rgb(6, 8, 8) 100%
+		);
+		position: relative;
+		padding: 0% 0 30% 0;
+}
+
+nav {
+	display: grid;
+	padding: 3% 0 0 2%;
+}
+
+nav a {
+	color: rgb(20, 22, 77, 100%);
+	text-decoration: none;
+	position: relative;
+	&:after {
+        content:'';
+        position: absolute;
+        width: 6%;
+        height: 2px;
+        bottom: 0;
+        left: 0;
+        background-color: rgb(0, 0, 0);
+        transform: scaleX(0);
+        transform-origin: bottom right;
+        transition: transform 0.3s;
+    }
+
+    &:hover {
+        &:after {
+            transform-origin: bottom left;
+            transform: scaleX(1);
+        }
+    }
+}
+	
+.header {
+	font-family: 'Lalezar', system-ui;
+	font-size: 18px;
+}
+	
+.name {
+	color: rgb(211, 241, 143);
+	font-family: "Kanit", sans-serif;
+	font-weight: 600;
+	font-style: normal;
+	font-size: 130px;
+	margin: 0 0 0 28%;
+	position: relative;
+}
+.general-description {
+	color: rgb(211, 241, 143);
+	font-family: "Kanit", sans-serif;
+	font-weight: 600;
+	font-style: normal;
+	position: relative;
+	font-size: 30px;
+	margin: 2% 15% 0 45%;
+}
+
+.about-me {
+	color: white;
+	position: relative;
+	margin: 2% 13% 0 45%;
+	text-align: left;
+}
+
+.me-img-border {
+	position: absolute;
+	border: 2px solid rgb(255, 255, 255);
+	padding: 11% 11% 12% 11%;
+	margin: 1% 0 0 20%;
+
+}
+
+.self-img { 
+	width: 22%;
+	position: absolute;
+	margin: 0 0 0 18%;
+}
+
+/* projects section*/
+.recent-projects {
+	background-color:  rgb(249, 249, 249);
+	padding-bottom: 8%;
+}
+
+.recent-projects-word {
+	color: rgb(20, 22, 77, 100%);
+	font-family: "Kanit", sans-serif;
+	font-weight: 600;
+	font-style: normal;
+	font-size: 53px;
+	text-align: center;
+	padding: 3% 0 0 0;
+}
+
+/* so-long */
+.so_long-border {
+	border: 2px solid black;
+	margin: 1% 7% 0 7%;
+	padding: 0 0 0 3%;
+	display: grid;
+	grid-template-columns: 1fr 20cm;
+}
+
+.so_long-word {
+	color: rgb(20, 22, 77, 100%);
+	font-family: "Inter", sans-serif;
+	font-size: 40px;
+	margin: 0 0 0 3%;
+	padding-top: 3%;
+}
+
+.so_long-img {
+	width: 20cm;
+	height: 9cm;
+	position: relative;
+	top: 15%;
+	right: 5%;
+	grid-column-start: 2;
+	grid-row-start: 1;
+	grid-row-end: 6;
+}
+
+.so_long-description {
+	margin: 3% 20% 0 3%;
+}
+
+.so_long-used {
+	color: rgb(20, 22, 77, 100%);
+	font-family: "Inter", sans-serif;
+	margin: 2% 0 0 3%;
+}
+
+.so_long-used-list {
+	margin: 2% 0 0 3%;
+}
+
+.so_long-learned {
+	color: rgb(20, 22, 77, 100%);
+	font-family: "Inter", sans-serif;
+	margin: 2% 0 0 3%;
+}
+
+.so_long-learned-list {
+	margin: 2% 0 4% 3%;
+}
+
+/* pipex */
+.pipex-border {
+	border: 2px solid black;
+	margin: 1% 7% 0 7%;
+	padding: 0 0 0 3%;
+	display: grid;
+	grid-template-columns: 19cm 1fr;
+}
+
+.pipex-word {
+	color: rgb(20, 22, 77, 100%);
+	font-family: "Inter", sans-serif;
+	font-size: 40px;
+	margin: 0 0 0 3%;
+	padding-top: 3%;
+}
+
+.pipex-img {
+	width: 18cm;
+	height: 9cm;
+	position: relative;
+	top: 10%;
+	left: 3%;
+	grid-column-start: 1;
+	grid-row-start: 1;
+	grid-row-end: 7;
+}
+
+.pipex-description {
+	margin: 3% 20% 0 3%;
+}
+
+.pipex-used {
+	color: rgb(20, 22, 77, 100%);
+	font-family: "Inter", sans-serif;
+	margin: 2% 0 0 3%;
+}
+
+.pipex-used-list {
+	margin: 2% 0 0 3%;
+}
+
+.pipex-learned {
+	color: rgb(20, 22, 77, 100%);
+	font-family: "Inter", sans-serif;
+	margin: 2% 0 0 3%;
+}
+
+.pipex-learned-list {
+	margin: 2% 0 7% 3%;
+}
+
+/* push swap */
+.push_swap-border {
+	border: 2px solid black;
+	margin: 1% 7% 0 7%;
+	padding: 0 0 0 3%;
+	display: grid;
+	grid-template-columns: auto 20cm;
+}
+
+.push_swap-word {
+	color: rgb(20, 22, 77, 100%);
+	font-family: "Inter", sans-serif;
+	font-size: 40px;
+	margin: 0 0 0 3%;
+	padding: 3% 0 0 0;
+}
+
+.push_swap-img {
+	width: 80%;
+	position: relative;
+	top: 5%;
+	left: 15%;
+	grid-column-start: 2;
+	grid-row-start: 1;
+	grid-row-end: 10;
+}
+
+.push_swap-description {
+	margin: 3% 8% 0 3%;
+}
+
+.push_swap-used {
+	color: rgb(20, 22, 77, 100%);
+	font-family: "Inter", sans-serif;
+	margin: 2% 0 0 3%;
+}
+
+.push_swap-used-list {
+	margin: 2% 0 0 3%;
+}
+
+.push_swap-learned {
+	color: rgb(20, 22, 77, 100%);
+	font-family: "Inter", sans-serif;
+	margin: 2% 0 0 3%;
+}
+
+.push_swap-learned-list {
+	margin: 2% 0 0 3%;
+	padding-bottom: 2cm;
+}
+
+/* skiils section */
+
+.skills {
+	background-color: rgb(20, 22, 77, 100%);
+	padding-bottom: 8%;
+}
+.skills-word	{
+	background-color: rgb(20, 22, 77, 100%);
+	color: rgb(211, 241, 143);
+	font-family: "Kanit", sans-serif;
+	font-weight: 600;
+	font-style: normal;
+	font-size: 53px;
+	text-align: center;
+	padding: 3% 0 0 0;
+}
+.icons {
+	color: white;
+	display: grid;
+	grid-template-columns: repeat(5, 1fr);
+	row-gap: 1cm;
+	font-size: 60px;
+	justify-items: center;
+	margin-top: 5%;
+}
+
+.icon-num {
+	display: flex;
+	flex-direction: column;
+	gap: 0.3cm;
+	align-items: center;
+}
+
+.icon-text {
+	color: rgb(211, 241, 143);
+	font-family: "Inter", sans-serif;
+	font-size: 15px;
+	text-align: center;
+}
+
+.contact-me {
+	background-color:  rgb(249, 249, 249);
+	padding: 3% 0 5% 0;
+}
+
+.send-me-message-word {
+	color: rgb(20, 22, 77, 100%);
+	font-family: "Kanit", sans-serif;
+	font-weight: 600;
+	font-style: normal;
+	font-size: 53px;
+	text-align: center;
+}
+
+.contact-me-text {
+	color: rgb(20, 22, 77, 100%);
+	font-family: "Inter", sans-serif;
+	font-size: 20px;
+	text-align: center;
+	margin: 1% 0 0 0;
+}
+
+form {
+	display: grid;
+	row-gap: 0.5cm;
+	margin-top: 4%;
+}
+input[type="text"] {
+	background-color:  rgb(249, 249, 249);
+	border: none;
+	border-bottom: 1px solid rgb(20, 22, 77, 100%);
+	outline: none;
+	width: 40%;
+	height: 1cm;
+	margin: auto;
+}
+
+label {
+	text-align: center;
+	color: rgb(20, 22, 77, 100%);
+	font-family: "Inter", sans-serif;
+	font-size: 15px;
+}
+
+.button {
+	background-color:  rgb(20, 22, 77, 100%);
+	color: rgb(211, 241, 143);
+	border: none;
+	outline: none;
+	width: 10%;
+	height: 1.5cm;
+	margin: auto;
+}
+
+footer {
+	background-color:  rgb(20, 22, 77, 100%);
+	padding: 2% 0 2% 0;
+}
+
+.copyright {
+	color: rgb(211, 241, 143);
+	font-family: "Inter", sans-serif;
+	font-size: 15px;
+	text-align: center;
+}
