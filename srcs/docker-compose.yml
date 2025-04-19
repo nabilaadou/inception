@@ -1,5 +1,3 @@
-version: '3.8'
-
 services:
   nginx:
     image: nginx
@@ -52,8 +50,6 @@ services:
       - 6378:6379
     networks:
       - inception
-    env_file:
-      - ./.env
   adminer:
     image: adminer
     build: ./requirements/bonus/adminer
@@ -77,6 +73,8 @@ services:
       - 40000-40100:40000-40100
     volumes:
       - ws:/var/www/html
+    env_file:
+      - ./.env
   portfolio:
     image: portfolio
     build: ./requirements/bonus/portfolio

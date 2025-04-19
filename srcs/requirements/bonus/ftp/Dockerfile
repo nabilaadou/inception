@@ -8,7 +8,7 @@ COPY tools/ftp.sh /root/script/ftp.sh
 
 RUN chmod +x /root/script/ftp.sh
 
-EXPOSE 21
+EXPOSE 21 40000-40100
 
 ENTRYPOINT ["/usr/bin/tini", "--"]
 

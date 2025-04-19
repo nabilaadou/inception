@@ -19,7 +19,6 @@ COPY tools/ws.sh /root/script/ws.sh
 RUN chmod +x /root/script/ws.sh
 
 EXPOSE 9000
-#test not exposing this port and check if its still gonna work
 
 ENTRYPOINT ["/usr/bin/tini", "--"]
 
