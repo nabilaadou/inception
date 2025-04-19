@@ -3,7 +3,7 @@
 mkdir -p /run/mysqld
 chown -R mysql:mysql /run/mysqld
 
-# # Start MariaDB in the background and wait for it to be ready
+#Start MariaDB in the background and wait for it to be ready
 mysqld_safe &
 
 # # Wait until MariaDB is ready
@@ -17,7 +17,7 @@ GRANT ALL PRIVILEGES ON *.* TO $DB_USER@'%' WITH GRANT OPTION;;
 FLUSH PRIVILEGES;
 EOF
 
-# # Shutdown MariaDB to apply changes
+#Shutdown MariaDB to apply changes
 mysqladmin -u root Shutdown
 
 # # Restart MariaDB in the foreground

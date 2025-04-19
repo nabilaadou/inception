@@ -9,6 +9,7 @@ COPY tools/database.sh /root/script/
 RUN chmod +x /root/script/database.sh
 
 EXPOSE 3306
+#don't expose this port and see if its gonna work
 
 ENTRYPOINT ["/usr/bin/tini", "--"]
 
