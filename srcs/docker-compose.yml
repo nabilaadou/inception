@@ -92,9 +92,9 @@ volumes:
     driver_opts:
        o: bind
        type: none
-       device: /home/laundryday/data/ws
+       device: /home/naadou/data/ws
   db:
     driver_opts:
        o: bind
        type: none
-       device: /home/laundryday/data/db
+       device: /home/naadou/data/db

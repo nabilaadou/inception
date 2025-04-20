@@ -1,5 +1,11 @@
 all:
 	sudo docker compose -f srcs/docker-compose.yml up --build
+dir:
+	sudo mkdir -p /home/naadou/data/ws
+	sudo mkdir -p /home/naadou/data/db
+
+re: clean all
+
 clean:
 	sudo docker compose -f srcs/docker-compose.yml down -v
 	sudo docker kill $$(sudo docker ps -q) || true

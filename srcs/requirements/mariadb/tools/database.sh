@@ -3,10 +3,9 @@
 mkdir -p /run/mysqld
 chown -R mysql:mysql /run/mysqld
 
-#Start MariaDB in the background and wait for it to be ready
 mysqld_safe &
 
-# # Wait until MariaDB is ready
+#Wait until MariaDB is ready
 sleep 3
 
 # # Create the database and user
