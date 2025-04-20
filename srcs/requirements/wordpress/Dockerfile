@@ -18,8 +18,6 @@ COPY tools/ws.sh /root/script/ws.sh
 
 RUN chmod +x /root/script/ws.sh
 
-EXPOSE 9000
-
 ENTRYPOINT ["/usr/bin/tini", "--"]
 
 CMD ["sh", "/root/script/ws.sh"]

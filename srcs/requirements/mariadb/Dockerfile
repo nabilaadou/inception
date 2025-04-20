@@ -8,8 +8,6 @@ COPY tools/database.sh /root/script/
 
 RUN chmod +x /root/script/database.sh
 
-EXPOSE 3306
-
 ENTRYPOINT ["/usr/bin/tini", "--"]
 
 CMD ["sh", "/root/script/database.sh"]
